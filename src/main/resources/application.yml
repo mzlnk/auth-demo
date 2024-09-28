@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: auth-demo
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          public-key-location: classpath:local/secrets/local.public.key
+          jws-algorithms: RS512
+
+auth:
+  providers:
+    google:
+      client-id: ${AUTH_GOOGLE_CLIENT_ID}
+      client-secret: ${AUTH_GOOGLE_CLIENT_SECRET}
+      redirect-uri: ${AUTH_GOOGLE_REDIRECT_URI}
+  jwt:
+    private-key: classpath:local/secrets/local.private.key
+    public-key: classpath:local/secrets/local.public.key
+    issuer: auth-demo
